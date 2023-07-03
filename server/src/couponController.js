@@ -28,8 +28,22 @@ const couponPost = async(req,res)=>{
 
 const getCouponOne =async(req,res)=>{
     try{
-        const response = await couponModel.findOne({})
-        return res.status(200).json({response})
+        const {couponCode,couponHeading,couponContent,logo,expiry,webLink,tc} = await couponModel.findOne({}).lean()
+
+        let modifiedCoupon =
+        {
+            couponCode,
+            "couponDetails":{
+                couponHeading,
+                couponContent
+            },
+            logo,
+            expiry,
+            tc,
+            webLink
+
+        }
+        return res.status(200).json({"response":modifiedCoupon})
     }catch(e){
         console.log(e)
         return res.status(500).json({"message":"Something went wrong"})
