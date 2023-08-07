@@ -7,6 +7,9 @@ const couponCodesSchema = mongoose.Schema({
     couponHeading:{
         type:String
     },
+    offerData:{
+        type:String
+    },
     couponContent:{
         type:String
     },

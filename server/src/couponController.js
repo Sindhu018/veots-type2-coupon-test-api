@@ -28,7 +28,7 @@ const couponPost = async(req,res)=>{
 
 const getCouponOne =async(req,res)=>{
     try{
-        const {couponCode,couponHeading,couponContent,logo,expiry,webLink,tc} = await couponModel.findOne({}).lean()
+        const {couponCode,couponHeading,couponContent,logo,expiry,webLink,tc,offerData} = await couponModel.findOne({}).lean()
 
         let modifiedCoupon =
         {
@@ -40,6 +40,7 @@ const getCouponOne =async(req,res)=>{
             logo,
             expiry,
             tc,
+            offerData,
             webLink
 
         }
